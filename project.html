@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Hamid Kamal</title>
+    <style>
+        :root {
+            --neon-blue: #0ff0fc;
+            --neon-pink: #ff00ff;
+            --neon-purple: #9d00ff;
+            --dark-bg: #0a0a1a;
+            --darker-bg: #050510;
+            --text-glow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rajdhani', 'Orbitron', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: white;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 50%, rgba(15, 240, 252, 0.1) 0%, transparent 100%);
+        }
+
+        .neon-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 3rem;
+            z-index: 100;
+            background: rgba(10, 10, 26, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 252, 0.1);
+        }
+
+        .nav-logo {
+            color: var(--neon-blue);
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: var(--text-glow);
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-blue);
+            text-shadow: var(--text-glow);
+        }
+
+        .nav-links a.active {
+            color: var(--neon-blue);
+            text-shadow: var(--text-glow);
+        }
+
+        .projects-container {
+            padding: 8rem 8% 4rem;
+            min-height: 100vh;
+        }
+
+        .projects-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .neon-text {
+            font-size: 4rem;
+            color: var(--neon-blue);
+            text-shadow: var(--text-glow);
+            letter-spacing: 0.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon {
+            font-size: 1.5rem;
+            color: var(--neon-pink);
+            margin-bottom: 3rem;
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(10, 10, 26, 0.7);
+            border: 1px solid rgba(0, 255, 252, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 252, 0.1);
+            border-color: var(--neon-blue);
+        }
+
+        .project-placeholder {
+            width: 100%;
+            height: 200px;
+            background: rgba(15, 240, 252, 0.1);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-placeholder::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent 0%,
+                transparent 45%,
+                var(--neon-blue) 50%,
+                transparent 55%,
+                transparent 100%
+            );
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(45deg) translate(-30%, -30%); }
+            100% { transform: rotate(45deg) translate(30%, 30%); }
+        }
+
+        .project-placeholder-icon {
+            font-size: 3rem;
+            color: var(--neon-blue);
+            z-index: 2;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            color: var(--neon-blue);
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .project-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-tag {
+            background: rgba(15, 240, 252, 0.2);
+            color: var(--neon-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .project-status {
+            text-align: center;
+            padding: 0.8rem;
+            background: rgba(255, 0, 255, 0.1);
+            color: var(--neon-pink);
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: auto;
+        }
+
+        .current-focus {
+            max-width: 800px;
+            margin: 4rem auto 0;
+            padding: 2rem;
+            background: rgba(10, 10, 26, 0.7);
+            border: 1px solid var(--neon-purple);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .current-focus h3 {
+            color: var(--neon-purple);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .neon-text {
+                font-size: 2.5rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="neon-nav">
+        <div class="nav-logo">HK</div>
+        <div class="nav-links">
+            <a href="index.html">HOME</a>
+            <a href="about.html">ABOUT</a>
+            <a href="project.html" class="active">PROJECTS</a>
+            <a href="contact.html">CONTACT</a>
+        </div>
+    </nav>
+
+    <div class="projects-container">
+        <div class="projects-header">
+            <h1 class="neon-text">MY PROJECTS</h1>
+            <div class="coming-soon">Under Construction - Amazing Work Coming Soon!</div>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-placeholder">
+                    <div class="project-placeholder-icon">💻</div>
+                </div>
+                <h3 class="project-title">Local Dress Store E-Commerce</h3>
+                <p class="project-description">
+                    Currently developing a responsive online store for a local dress shop to help them reach more customers.
+                    This project will showcase my skills in front-end development and user experience design.
+                </p>
+                <div class="project-skills">
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Responsive Design</span>
+                </div>
+                <div class="project-status">IN PROGRESS</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-placeholder">
+                    <div class="project-placeholder-icon">🧩</div>
+                </div>
+                <h3 class="project-title">Interactive Portfolio</h3>
+                <p class="project-description">
+                    The very portfolio you're viewing right now! Built with modern web technologies
+                    to demonstrate my front-end capabilities with a futuristic aesthetic.
+                </p>
+                <div class="project-skills">
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Three.js</span>
+                </div>
+                <div class="project-status">LIVE</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-placeholder">
+                    <div class="project-placeholder-icon">🚀</div>
+                </div>
+                <h3 class="project-title">Future Project</h3>
+                <p class="project-description">
+                    I'm constantly learning and experimenting with new technologies. My next project
+                    will incorporate more advanced JavaScript frameworks and backend technologies.
+                </p>
+                <div class="project-skills">
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">API Integration</span>
+                </div>
+                <div class="project-status">COMING SOON</div>
+            </div>
+        </div>
+
+        <div class="current-focus">
+            <h3>What I'm Focusing On Now</h3>
+            <p>
+                While I'm just starting my project journey, I'm currently dedicating my time to mastering 
+                JavaScript and building my first complete web application. My focus is on creating clean, 
+                efficient code and learning best practices that will make my future projects stand out.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Animation for project cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            projectCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = `all 0.5s ease ${index * 0.1}s`;
+                
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Hamid Kamal</title>
+    <style>
+        /* CSS Reset & Base Styles */
+        :root {
+            --neon-blue: #0ff0fc;
+            --neon-pink: #ff00ff;
+            --neon-purple: #9d00ff;
+            --dark-bg: #0a0a1a;
+            --darker-bg: #050510;
+            --text-glow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rajdhani', 'Orbitron', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: white;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 50%, rgba(15, 240, 252, 0.1) 0%, transparent 100%);
+        }
+
+        /* Navigation */
+        .neon-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 3rem;
+            z-index: 100;
+            background: rgba(10, 10, 26, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 252, 0.1);
+        }
+
+        .nav-logo {
+            color: var(--neon-blue);
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: var(--text-glow);
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-blue);
+            text-shadow: var(--text-glow);
+        }
+
+        .nav-links a.active {
+            color: var(--neon-blue);
+            text-shadow: var(--text-glow);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* About Container */
+        .about-container {
+            padding: 8rem 8% 4rem;
+            min-height: 100vh;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .neon-text {
+            font-size: 4rem;
+            margin-bottom: 3rem;
+            color: var(--neon-blue);
+            text-shadow: var(--text-glow);
+            letter-spacing: 0.2rem;
+        }
+
+        .neon-pink {
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 4rem auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--neon-blue), var(--neon-pink));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--dark-bg);
+            border: 3px solid var(--neon-blue);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::after {
+            right: -10px;
+        }
+
+        .right::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background: rgba(10, 10, 26, 0.7);
+            border: 1px solid rgba(0, 255, 252, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            position: relative;
+            box-shadow: 0 0 10px rgba(0, 255, 252, 0.1);
+        }
+
+        .timeline-content h3 {
+            color: var(--neon-blue);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content p {
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            margin-top: 6rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: rgba(10, 10, 26, 0.7);
+            border: 1px solid rgba(0, 255, 252, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 252, 0.1);
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1.5rem;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .skill-icon.html {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="%23E34F26" d="M0 32l34.9 395.8L192 480l157.1-52.2L384 32H0zm308.2 127.9H124.4l4.1 49.4h175.6l-13.6 148.4-97.9 27v.3h-1.1l-98.7-27.3-6-75.8h47.7L138 320l53.5 14.5 53.7-14.5 6-62.2H84.3L71.5 112.2h241.1l-4.4 47.7z"/></svg>');
+        }
+
+        .skill-icon.css {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="%231572B6" d="M0 32l34.9 395.8L192 480l157.1-52.2L384 32H0zm313.1 80l-4.8 47.3L193 208.6l-.3.1h111.5l-12.8 146.6-98.2 28.7-98.8-29.2-6.4-73.9h48.9l3.2 38.3 52.6 13.3 54.7-15.4 3.7-61.6-119.3-.3-1.2-13.4H265.7l1.7-19.5H140.6l-3.6-40.2 119.4-.3.5-5.2 1.2-14.8H72.1L61.4 112h261.3z"/></svg>');
+        }
+
+        .skill-icon.js {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="%23F7DF1E" d="M0 32v448h448V32H0zm243.8 349.4c0 43.6-25.6 63.5-62.9 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V237.7h42.1v143.7zm99.6 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6z"/></svg>');
+        }
+
+        .skill-icon.java {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="%235382A1" d="M286 248.57c0-16.71-11.44-28.05-30.5-31.32-1.34 5.87-1.77 10.27-2.58 16.07-10.71-2.58-22.07-3.86-33.33-3.86-31.32 0-44.57 7.72-44.57 26.17 0 36.85 53.19 34.19 53.19 53.19 0 14.66-13.42 25.81-38.25 25.81-19.15 0-36.39-7.72-44.05-23.55l-25.81 15.5c12 23.55 35.28 38.25 71.13 38.25 46.31 0 75.39-23.55 75.39-56.86 0-38.68-53.19-42-53.19-56.86zm-125.5-30.5c-8.23-10.28-21.49-16.07-36.39-16.07-4.3 0-8.23.43-12.59 1.34 5.16-14.23 14.23-28.05 28.48-36.85-20.62 5.16-41.67 18.85-54.28 36.39-14.23 19.15-22.5 45.31-22.5 74.83 0 31.75 11.44 56 30.07 71.56 15.93 13.42 36.39 20.19 56 20.19 18 0 31.75-4.3 31.75-4.3 0-17.22.43-34.45.86-51.25-9.45 1.77-19.58 2.58-29.28 2.58-51.68 0-70.27-22.5-70.27-52.15 0-19.58 7.29-36.39 19.15-47.52zM384 92.79v314.86c0 25.38-1.34 55.6-1.34 55.6s-11.87 5.6-38.68 8.66c-21.06 2.58-48.71 4.3-77.66 4.3-36.39 0-66.6-2.58-89.46-7.72-12.16-2.58-23.55-6.45-33.76-10.71-2.58-.86-4.73-1.77-6.88-2.58-.43-.43-.86-.86-.86-1.34v-.43c-.43 0-.43-.43-.86-.43 0 0 .43-.43.43-.86 0-.43.43-.43.43-.86 0-.43.43-.86.86-.86.43 0 .86.43.86.43 1.77-1.34 3.45-2.58 5.16-3.86 8.23-5.16 16.5-10.28 24.34-16.07-6.45-1.34-12.16-3-17.65-5.16-39.54-14.66-60.57-43.18-60.57-85.06 0-25.81 9-48.71 25.38-66.17 16.5-17.65 39.54-28.91 66.6-33.33 2.58-.43 5.16-.86 7.72-1.34-.86-1.77-1.77-3.45-2.58-5.16-9.45-19.15-13.85-39.97-13.85-60.57 0-14.23 2.15-28.05 5.6-41.24 19.58 24.77 47.09 42 81.09 49.37 1.34 5.16 2.58 10.28 4.3 15.07 10.71-2.58 21.92-6.02 32.63-10.71 2.58 8.23 5.6 16.07 9.45 23.55-15.07 6.02-28.48 14.66-39.11 25.81 25.38 5.6 46.31 18.42 60.57 37.14 16.07 20.62 24.34 46.74 24.34 76.29 0 29.28-8.23 55.17-24.34 75.39-15.5 19.58-36.85 32.63-61.24 39.54 0 0 8.66 1.34 23.12 1.34 42.86 0 94.83-9.45 94.83-9.45s-1.34-27.24-1.34-58.14zm-96.86-41.67c-9.45-12.16-22.5-21.92-38.25-27.67 1.77-4.3 3.86-8.23 6.45-12.16 14.23-21.06 36.39-34.45 63.89-40.24-3 6.45-6.45 12.59-10.28 18.42-14.66 22.5-22.07 48.28-22.07 74.83 0 8.23.86 16.5 1.77 24.34-12.59-5.6-23.98-14.23-33.76-25.38z"/></svg>');
+        }
+
+        .skill-icon.responsive {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="%2325C2A0" d="M112 48h352v48h48V32a32.09 32.09 0 0 0-32-32H96a32.09 32.09 0 0 0-32 32v256H16a16 16 0 0 0-16 16v16a64.14 64.14 0 0 0 63.91 64H352v-96H112zm492 80H420a36 36 0 0 0-36 36v312a36 36 0 0 0 36 36h184a36 36 0 0 0 36-36V164a36 36 0 0 0-36-36zm-12 336H432V176h160z"/></svg>');
+        }
+
+        .skill-icon.threejs {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path fill="%23049EF4" d="M120.12 42.53L68.69 21.33a5.28 5.28 0 00-5.06 0L12.15 42.53a2.65 2.65 0 000 4.72l17.15 9.48v19.2a5.3 5.3 0 002.64 4.59l31.9 18.39a5.28 5.28 0 005.06 0l31.9-18.39a5.3 5.3 0 002.64-4.59V56.73l17.15-9.48a2.65 2.65 0 00.03-4.72zM66.36 28.19a1.32 1.32 0 011.28 0l47.9 26.43-19.05 10.5-47.2-26.43zm-2.56 1.4v23.58L20.1 54.62 35.7 46.5zm-33.9 41.7l-13.83-7.64 13.83-7.63zm33.9 3.1v23.6l-30.1-17.38zm2.56 0l30.1-17.38 30.1 17.38-30.1 17.38zm2.56-3.1v-15.25l13.83 7.63zm60.53-25.4L69.64 52.8l19.05 10.5 15.6-8.1zM35.7 81.2l-15.6-8.1 15.6-8.1zm2.56 19.8l-13.83-7.63 13.83-7.63zm60.53 3.1L69.64 99.5l19.05 10.5 15.6-8.1z"/></svg>');
+        }
+
+        .skill-card h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+
+        .skill-level {
+            height: 100%;
+            border-radius: 4px;
+        }
+
+        .skill-level.html {
+            width: 95%;
+            background: linear-gradient(to right, #ff7b00, #ff9500);
+            animation: fillBar 1.5s ease-out;
+        }
+
+        .skill-level.css {
+            width: 90%;
+            background: linear-gradient(to right, #0068ba, #0095e8);
+            animation: fillBar 1.5s ease-out 0.2s;
+        }
+
+        .skill-level.js {
+            width: 85%;
+            background: linear-gradient(to right, #efd81d, #f7df63);
+            animation: fillBar 1.5s ease-out 0.4s;
+        }
+
+        .skill-level.java {
+            width: 60%;
+            background: linear-gradient(to right, #5382a1, #7bb0d1);
+            animation: fillBar 1.5s ease-out 0.6s;
+        }
+
+        .skill-level.responsive {
+            width: 88%;
+            background: linear-gradient(to right, #25c2a0, #3ddc91);
+            animation: fillBar 1.5s ease-out 0.8s;
+        }
+
+        .skill-level.threejs {
+            width: 70%;
+            background: linear-gradient(to right, #049ef4, #6ad1f3);
+            animation: fillBar 1.5s ease-out 1s;
+        }
+
+        @keyframes fillBar {
+            from { width: 0; }
+            to { width: attr(data-level); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 21px;
+            }
+
+            .left::after, .right::after {
+                left: 21px;
+            }
+
+            .right {
+                left: 0;
+            }
+
+            .neon-text {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="neon-nav">
+        <div class="nav-logo">HK</div>
+        <div class="nav-links">
+            <a href="index.html">HOME</a>
+            <a href="about.html" class="active">ABOUT</a>
+            <a href="project.html">PROJECTS</a>
+            <a href="contact.html">CONTACT</a>
+        </div>
+    </nav>
+
+    <div class="about-container">
+        <div class="about-content">
+            <h1 class="neon-text">MY <span class="neon-pink">JOURNEY</span></h1>
+            
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>👨‍💻 Family Start (2024)</h3>
+                        <p>Learned HTML/CSS from my backend-dev uncle.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>🚀 JS Self-Taught (2025)</h3>
+                        <p>Mastered JavaScript basics solo – no frameworks yet.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>🛒 E-Commerce Test (2025)</h3>
+                        <p>Currently building my first real project: a local dress store site.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>🌌 3D Experiments (Now)</h3>
+                        <p>Learning Three.js/Java for future projects (like this portfolio).</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>🔮 Next-Level Goals</h3>
+                        <p>Finish e-commerce site → Build 3D portfolio → Go full-stack.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="skills-section">
+            <h2 class="neon-text">TECHNICAL <span class="neon-pink">SKILLS</span></h2>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon html"></div>
+                    <h3>HTML5</h3>
+                    <div class="skill-bar">
+                        <div class="skill-level html"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon css"></div>
+                    <h3>CSS3</h3>
+                    <div class="skill-bar">
+                        <div class="skill-level css"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon js"></div>
+                    <h3>JavaScript</h3>
+                    <div class="skill-bar">
+                        <div class="skill-level js"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon java"></div>
+                    <h3>Java (learning)</h3>
+                    <div class="skill-bar">
+                        <div class="skill-level java"></div>
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animate skills when they come into view
+        document.addEventListener('DOMContentLoaded', () => {
+            const skillCards = document.querySelectorAll('.skill-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            skillCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Animate timeline items
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            timelineItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = index % 2 === 0 ? 'translateX(-50px)' : 'translateX(50px)';
+                item.style.transition = 'all 0.5s ease';
+                
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateX(0)';
+                }, 200 * index);
+            });
+        });
+    </script>
+</body>
+</html>
