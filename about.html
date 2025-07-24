@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>About | Hamid Kamal</title>
     <style>
         /* CSS Reset & Base Styles */
@@ -51,6 +52,11 @@
             text-shadow: var(--text-glow);
         }
 
+        .nav-links {
+            display: flex;
+            transition: all 0.5s ease;
+        }
+
         .nav-links a {
             color: white;
             text-decoration: none;
@@ -83,6 +89,25 @@
 
         .nav-links a:hover::after {
             width: 100%;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 101;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: var(--neon-blue);
+            transition: all 0.3s ease;
         }
 
         /* About Container */
@@ -304,7 +329,48 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 1024px) {
+            .neon-text {
+                font-size: 3rem;
+            }
+        }
+
         @media (max-width: 768px) {
+            .neon-nav {
+                padding: 1.5rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 26, 0.95);
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(0, 255, 252, 0.2);
+                opacity: 0;
+                transform: translateY(-20px);
+                pointer-events: none;
+            }
+            
+            .nav-links.active {
+                opacity: 1;
+                transform: translateY(0);
+                pointer-events: all;
+                display: flex;
+            }
+            
+            .nav-links a {
+                margin: 0.5rem 0;
+                padding: 1rem;
+            }
+
             .timeline::after {
                 left: 31px;
             }
@@ -330,6 +396,10 @@
             .neon-text {
                 font-size: 2.5rem;
             }
+
+            .about-container {
+                padding: 6rem 1.5rem 4rem;
+            }
         }
     </style>
 </head>
@@ -341,6 +411,11 @@
             <a href="about.html" class="active">ABOUT</a>
             <a href="project.html">PROJECTS</a>
             <a href="contact.html">CONTACT</a>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </nav>
 
@@ -427,8 +502,19 @@
     </div>
 
     <script>
-        // Animate skills when they come into view
+        // Mobile Menu Toggle
         document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                
+                // Animate hamburger to "X"
+                hamburger.classList.toggle('active');
+            });
+
+            // Animate skills when they come into view
             const skillCards = document.querySelectorAll('.skill-card');
             
             const observer = new IntersectionObserver((entries) => {
