@@ -237,6 +237,24 @@
             margin-top: auto;
         }
 
+        .project-link {
+            display: inline-block;
+            text-align: center;
+            padding: 0.8rem;
+            background: rgba(15, 240, 252, 0.2);
+            color: var(--neon-blue);
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: rgba(15, 240, 252, 0.3);
+            box-shadow: 0 0 10px rgba(15, 240, 252, 0.5);
+        }
+
         .current-focus {
             max-width: 800px;
             margin: 4rem auto 0;
@@ -333,22 +351,27 @@
         </div>
 
         <div class="projects-grid">
+            <!-- Sifra AI Project Card -->
             <div class="project-card">
                 <div class="project-placeholder">
-                    <div class="project-placeholder-icon">💻</div>
+                    <div class="project-placeholder-icon"><i class="fas fa-brain"></i></div>
                 </div>
-                <h3 class="project-title">Local Dress Store E-Commerce</h3>
+                <h3 class="project-title">Sifra AI - Human-Centered AI Companion</h3>
                 <p class="project-description">
-                    Currently developing a responsive online store for a local dress shop to help them reach more customers.
-                    This project will showcase my skills in front-end development and user experience design.
+                    A visionary AI concept designed to understand human emotions, adapt to individual needs, 
+                    and grow with users over time. This project combines psychology with cutting-edge AI 
+                    technology to create the world's first truly human-centered artificial intelligence.
                 </p>
                 <div class="project-skills">
-                    <span class="skill-tag">HTML5</span>
-                    <span class="skill-tag">CSS3</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">Responsive Design</span>
+                    <span class="skill-tag">AI Concept Design</span>
+                    <span class="skill-tag">Psychology Integration</span>
+                    <span class="skill-tag">Frontend Development</span>
+                    <span class="skill-tag">Ethical AI Framework</span>
                 </div>
-                <div class="project-status">IN PROGRESS</div>
+                <a href="https://hamid220-kamal.github.io/Sifra-Ai/" target="_blank" class="project-link">
+                    <i class="fas fa-external-link-alt"></i> Explore the Vision
+                </a>
+                <div class="project-status">VISION PHASE</div>
             </div>
 
             <div class="project-card">
@@ -357,8 +380,11 @@
                 </div>
                 <h3 class="project-title">Interactive Portfolio</h3>
                 <p class="project-description">
-                    The very portfolio you're viewing right now! Built with modern web technologies
-                    to demonstrate my front-end capabilities with a futuristic aesthetic.
+                  This is my personal portfolio, built to showcase my front-end development skills in a way that feels modern and futuristic. From the moment you land on it, you’ll see interactive visuals, smooth animations, and a design that highlights both creativity and technical ability.
+
+The structure is simple and clear: you’ll find sections about me, the tools I use, the projects I’ve built, and how to get in touch.
+
+The idea wasn’t just to put projects on display, but to create an experience — one that reflects my style as a developer and my focus on clean, user-friendly design backed by modern web technologies.
                 </p>
                 <div class="project-skills">
                     <span class="skill-tag">HTML5</span>
@@ -375,8 +401,9 @@
                 </div>
                 <h3 class="project-title">Future Project</h3>
                 <p class="project-description">
-                    I'm constantly learning and experimenting with new technologies. My next project
-                    will incorporate more advanced JavaScript frameworks and backend technologies.
+                  I’m always exploring new technologies to sharpen my skills and bring fresh ideas to life. 
+                  My next project will take a step beyond front-end development by incorporating both advanced JavaScript frameworks and backend technologies. 
+                  The goal is to build something more dynamic, scalable, and closer to real-world applications.This project will be a chance to combine design, interactivity, and functionality into one complete product. It’s not just about learning the tools, but about using them to solve problems and create applications that feel practical, intuitive, and ready for the future.
                 </p>
                 <div class="project-skills">
                     <span class="skill-tag">React</span>
@@ -426,9 +453,5 @@
             });
         });
     </script>
-    
-<script>
-(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="1x80cmlfdIJn1dGfnvhOc";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-</script>
 </body>
 </html>
